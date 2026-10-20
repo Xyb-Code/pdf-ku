@@ -1,0 +1,22 @@
+{
+  "fixture": "10 synthetic noisy image pages with text; uncompressed source image streams",
+  "input_bytes": 129663688,
+  "lossless": {
+    "output_bytes": 85822136,
+    "seconds": 7.12,
+    "pages": 10,
+    "text_retained": true
+  },
+  "strong": {
+    "output_bytes": 271531,
+    "seconds": 15.88,
+    "pages": 10,
+    "text_retained": true
+  },
+  "target_1MiB": {
+    "output_bytes": 711344,
+    "seconds": 23.99,
+    "pages": 10,
+    "text_retained": true
+  }
+}

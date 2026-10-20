@@ -1,0 +1,9 @@
+.venv/
+.uv-cache/
+__pycache__/
+build/
+dist/
+*.spec
+tools/downloads/
+tools/7zip/
+tools/ghostscript/
