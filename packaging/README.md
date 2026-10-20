@@ -5,14 +5,16 @@
 ## 当前交付状态
 
 - Windows：可在当前 Windows 环境构建、执行自检并交付 exe。
-- macOS：已准备跨平台代码、原生引擎编译、App/DMG 构建及自检流程。必须在 Mac 或 GitHub macOS runner 执行；尚未在当前 Windows 环境生成/验证 Mac 安装包。
+- macOS：已通过 GitHub 的 Apple Silicon 和 Intel 原生 Mac 构建、自检，均生成内置全部运行依赖的 DMG。当前包采用 ad-hoc 签名，尚未使用 Developer ID 签名和 Apple 公证，正式免拦截分发仍需配置相关凭证。
 - 不把脚本、源码或重命名的 Windows 文件称为 Mac App。
 
 ## 无需给用户配置环境
 
 Windows 包内包含 Python/Tk、界面资源、拖放组件、PDF 库及 Ghostscript DLL。Mac App 包内包含对应架构的全部运行时、拖放组件及 Ghostscript dylib，资源通过 App 内相对路径读取；用户偏好和日志写入用户目录，程序不写自身 App 包。
 
-Mac 支持两种原生构建：Apple Silicon `arm64` 和 Intel `x86_64`，构建目标 macOS 13 或以上。分别使用两台对应架构的 runner，避免要求用户安装 Rosetta。最低版本和完整功能仍需原生构建/测试后确认。
+Mac 支持两种原生构建：Apple Silicon `arm64` 和 Intel `x86_64`，分别在 macOS 15 对应架构的 runner 上通过独立包自检，无需 Rosetta。构建目标 macOS 13 或以上，但较低系统版本未进行实机验证。
+
+验证记录：[三平台构建全部成功](https://github.com/Xyb-Code/pdf-ku/actions/runs/39399805307)。自检包含 UI 定时器响应、拖放组件加载、实际压缩、输出页数、可搜索文字及页面渲染；App 从项目目录之外启动，清除 Python/Ghostscript 环境变量，并限制 PATH 为系统目录。
 
 ## 开发者本地构建
 

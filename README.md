@@ -6,7 +6,11 @@
 
 Windows 已打包版本：直接双击 `dist\PDF简作.exe`，无需安装 Python 或其他依赖。
 
-macOS 已完成代码适配和独立 App/DMG 构建配置，尚待在 Mac 环境构建验证；当前目录没有可交付的 Mac 安装包。详细状态与自动构建配置见 [独立桌面发行说明](packaging/README.md)。Mac 最终用户只需打开 DMG，将 App 拖到“应用程序”，双击运行，不执行下面的开发者安装步骤。
+macOS 的 Apple 芯片和 Intel 安装包均已完成原生构建、自检。只需下载对应 DMG，将 App 拖到“应用程序”，无需 Python、Homebrew、Ghostscript 等额外组件。当前 Mac 包未使用 Developer ID 公证，首次打开可能出现 macOS 安全提醒；正式免拦截分发仍需开发者签名和公证。
+
+三个平台的原生自检均已通过：[构建记录及安装包下载](https://github.com/Xyb-Code/pdf-ku/actions/runs/39399805307)。在页面底部 Artifacts 中选择 `PDF-jianzuo-Windows`、`PDF-jianzuo-macOS-arm64`（M 系列芯片）或 `PDF-jianzuo-macOS-x86_64`（Intel）。ZIP 内仅 exe 或 DMG 是运行/安装文件，其余是校验和和自检报告。
+
+详细构建与签名配置见 [独立桌面发行说明](packaging/README.md)。最终用户不执行下面的开发者安装步骤。
 
 开发者从源码运行（最终用户无需操作）：
 
